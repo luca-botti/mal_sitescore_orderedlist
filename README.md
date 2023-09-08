@@ -6,3 +6,5 @@ From your anime list, just export your anime list and put it in the same folder 
 - json_anime_reader.py: will print the list from the json file using the parameter setted, like before add the name file and set yotu settings.
 
 Library used (that needs to be installed with pip: requests, xmltodict, beautifulsoup4)
+
+# WARINGN MAL can detect the program as a bot and lock you out of the site for some times, use at your risk
