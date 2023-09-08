@@ -1,13 +1,20 @@
 import json
 
+
+# PARAMETERS
 ONLY_PLAN_TO_WATCH = True
 ASCENDING = False
 MIN_SCORE = 7.5
 ACTIVATE_LINK = True
-FILE_NAME = 'animelist_1694175851_-_16749231.json'
+FILE_NAME = ''
 
 
 
+
+
+
+
+# CONSTANTS (DO NOT CHANGE)
 SCORE_LABEL = 'score'
 STATUS_LABEL = 'my_status'
 PLAN_TO_WATCH_LABEL = 'Plan to Watch'

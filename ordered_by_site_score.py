@@ -4,10 +4,16 @@ import json
 import concurrent.futures
 from bs4 import BeautifulSoup
 
-USE_MULTITHREADING = True
-MAX_WORKERS = 20
 
-FILE_NAME = 'animelist_1694175851_-_16749231.xml'
+
+# PARAMETERS
+USE_MULTITHREADING = True
+MAX_WORKERS = 5
+
+FILE_NAME = ''
+
+
+
 
 
 
@@ -38,7 +44,6 @@ with open('animelist_1694175851_-_16749231.xml') as fd:
 
     # print(json.dumps(doc, indent=4, sort_keys=True))
 
-
     # list of dictionary
     anime_list = doc['myanimelist']['anime']
 
@@ -65,9 +70,6 @@ with open('animelist_1694175851_-_16749231.xml') as fd:
     #save the list in a json file
     with open(json_name, 'w') as outfile:
         json.dump(new_list, outfile, indent=4, sort_keys=True)
-
-    # for anime in new_list:
-    #     print("Anime: " + anime['series_title'] + " - Score: " + anime['score'])
 
 
 
