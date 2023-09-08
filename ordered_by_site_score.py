@@ -16,12 +16,15 @@ FILE_NAME = ''
 
 
 
-
-
+# CONSTANTS (DO NOT CHANGE)
+WEB_LINK_START = 'https://myanimelist.net/anime/'
+ANIME_ID_STRING = 'series_animedb_id'
+SITE_SCORE_LABEL = 'score-label'
+SCORE_LABEL = 'score'
 
 def update_score(a_list, number, anime_id_string, site_score_label, score_label):
 
-    r = requests.get('https://myanimelist.net/anime/' + a_list[number][anime_id_string])
+    r = requests.get(WEB_LINK_START + a_list[number][anime_id_string])
 
     soup = BeautifulSoup(r.text, 'html.parser')
 
@@ -39,17 +42,13 @@ def update_score(a_list, number, anime_id_string, site_score_label, score_label)
 
 
 # get xml from file
-with open('animelist_1694175851_-_16749231.xml') as fd:
+with open(FILE_NAME) as fd:
     doc = xmltodict.parse(fd.read())
 
     # print(json.dumps(doc, indent=4, sort_keys=True))
 
     # list of dictionary
     anime_list = doc['myanimelist']['anime']
-
-    ANIME_ID_STRING = 'series_animedb_id'
-    SITE_SCORE_LABEL = 'score-label'
-    SCORE_LABEL = 'score'
 
     if USE_MULTITHREADING:
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -62,7 +61,7 @@ with open('animelist_1694175851_-_16749231.xml') as fd:
         for i in range(len(anime_list)):
             update_score(anime_list, i, ANIME_ID_STRING, SITE_SCORE_LABEL, SCORE_LABEL)
     
-    new_list = sorted(anime_list, key=lambda k: k['score'], reverse=True)
+    new_list = sorted(anime_list, key=lambda k: k[SCORE_LABEL], reverse=True)
 
 
     json_name = FILE_NAME.split('.', maxsplit=1)[0] + '.json'
