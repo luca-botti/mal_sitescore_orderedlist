@@ -15,7 +15,7 @@ def escape(list, str, strip=True):
 
 
 ANIME_ID = 1
-req = requests.get("https://myanimelist.net/anime/" + ANIME_ID, timeout=5)
+req = requests.get("https://myanimelist.net/anime/" + str(ANIME_ID), timeout=5)
 soup = BeautifulSoup(req.text, "html.parser")
 
 attribute = {
@@ -25,7 +25,6 @@ attribute = {
     # "first_list_index": 0,
     "list_jumper": 1,
 }
-
 
 if attribute.get("first_list_index") is None:
     val = escape(
