@@ -119,7 +119,8 @@ COSTANT = {
             "string": "ANIME STUDIOS",
             "json": "anime_studios",
             "search_key": "Studios:",
-            "sibling_distance": 3,
+            "first_list_index": 3,
+            "list_jumper": 2,
         },
         {
             "string": "ANIME SOURCE",
