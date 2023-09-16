@@ -4,3 +4,6 @@
 
 # xml files
 *.xml
+
+# txt files
+*.txt

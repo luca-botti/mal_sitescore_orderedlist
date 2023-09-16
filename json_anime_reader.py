@@ -6,26 +6,20 @@ ONLY_PLAN_TO_WATCH = True
 ASCENDING = False
 MIN_SCORE = 7.5
 ACTIVATE_LINK = True
-FILE_NAME = ''
-
-
-
-
-
+FILE_NAME = ""
 
 
 # CONSTANTS (DO NOT CHANGE)
-SCORE_LABEL = 'score'
-STATUS_LABEL = 'my_status'
-PLAN_TO_WATCH_LABEL = 'Plan to Watch'
-TITLE_LABEL = 'series_title'
-ANIME_ID_LABEL = 'series_animedb_id'
-WEB_LINK_START = 'https://myanimelist.net/anime/'
+SCORE_LABEL = "score"
+STATUS_LABEL = "my_status"
+PLAN_TO_WATCH_LABEL = "Plan to Watch"
+TITLE_LABEL = "series_title"
+ANIME_ID_LABEL = "series_animedb_id"
+WEB_LINK_START = "https://myanimelist.net/anime/"
 
 
 # get json from file
 with open(FILE_NAME) as fd:
-
     # list of dictionary
     anime_list = json.load(fd)
 
@@ -41,10 +35,15 @@ with open(FILE_NAME) as fd:
         if ONLY_PLAN_TO_WATCH and anime[STATUS_LABEL] != PLAN_TO_WATCH_LABEL:
             continue
 
-        if anime[SCORE_LABEL] == 'N/A':
+        if anime[SCORE_LABEL] == "N/A":
             continue
 
         if float(anime[SCORE_LABEL]) < MIN_SCORE:
             continue
 
-        print(anime[SCORE_LABEL] + ' - ' + anime[TITLE_LABEL] + (' - ' + WEB_LINK_START + anime[ANIME_ID_LABEL] if ACTIVATE_LINK else ''))
+        print(
+            anime[SCORE_LABEL]
+            + " - "
+            + anime[TITLE_LABEL]
+            + (" - " + WEB_LINK_START + anime[ANIME_ID_LABEL] if ACTIVATE_LINK else "")
+        )
